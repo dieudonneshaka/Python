@@ -615,6 +615,7 @@ for i in range(1, 6):
 #continue	Ohittaa kierroksen loppuosan ja jatkaa
 #pass	Ei tee mitään – paikanvaraus koodille
 
+
 #G. Toisin kuin useimmat muut ohjelmointikielet, Python mahdollistaa 
 # else-osan käyttämisen myös toistorakenteissa. Mihin tätä käytetään
 
@@ -646,4 +647,189 @@ else:
 #Esimerkiksi voidaan etsiä tietty arvo listasta:
 #Jos arvo löytyy, käytetään break.
 #Jos arvoa ei löydy, else kertoo, että etsintä epäonnistui.
+
+
+
+#7.Tiedostojen käsittely
+
+#Miten tekstitiedostosta luetaan?
+
+# Luetaan tekstitiedosto "teksti.txt" ja tulostetaan sen sisältö
+
+
+# Luetaan tekstitiedosto "teksti.txt" ja tulostetaan sen sisältö
+
+with open("teksti.txt", "r", encoding="utf-8") as tiedosto:
+    sisalto = tiedosto.read()
+    print(sisalto)
+
+
+#Selitys:
+#with open(...) avaa tiedoston turvallisesti ja sulkee sen automaattisesti.
+#"r" tarkoittaa, että tiedosto avataan lukemista varten.
+#read() lukee koko tiedoston sisällön.
+#print() näyttää tiedoston sisällön näytöllä.
+
+
+#B. Miten tekstitiedostoon kirjoitetaan?
+
+with open("teksti.txt", "w", encoding="utf-8") as tiedosto:
+    tiedosto.write("Hei maailma!\n")
+    tiedosto.write("Tämä on toinen rivi.")
+
+
+# Kirjoitetaan teksti tiedostoon "teksti.txt"
+
+
+#C. Miten bittimuotoista dataa luetaan ja kirjoitetaan? (ks.
+#  osio ”12 Tietotyypit ja leikkaukset”)
+
+
+#Tässä selitys ja yksinkertainen esimerkki Pythonissa bittimuotoisen datan lukemisesta ja
+#  kirjoittamisesta. Bittimuotoinen data tarkoittaa, että käsittelemme tiedostoa binäärinä
+#  (eli ei pelkkää tekstiä, vaan myös kuvat, videot, tms.).
+
+# Kirjoitetaan bittimuotoista dataa tiedostoon
+data = b"Hei Python!"  # 'b' tekee datasta bytes-tyyppisen
+with open("bitti_tiedosto.bin", "wb") as tiedosto:  # 'wb' = write binary
+    tiedosto.write(data)
+
+# Luetaan bittimuotoista dataa tiedostosta
+with open("bitti_tiedosto.bin", "rb") as tiedosto:  # 'rb' = read binary
+    luettu_data = tiedosto.read()
+
+print(luettu_data)  # tulostaa: b'Hei Python!'
+
+
+#Selitys:
+#b"..." tarkoittaa bittijonoa (bytes).
+#'wb' avaa tiedoston kirjoitusta varten binäärimuodossa.
+#'rb' avaa tiedoston lukemista varten binäärimuodossa.
+#Tulostus näyttää b'...', koska kyseessä on bytes-tyyppi.
+
+
+#8. Funktiot
+
+#A. Kurssilla käytetään termiä ”alifunktio”, mutta tämä on käytännössä sama asia kuin funktio.
+#  ”Pääfunktio” on se koodi, joka ajetaan ohjelman käynnistyessä, ja ”alifunktio” mikä tahansa
+#  funktio, jota se kutsuu.
+
+#Selitetään tämä helposti ja esimerkin avulla.
+#Pythonissa funktio on koodilohko, jonka voi kutsua useita kertoja ohjelman aikana.
+#Pääfunktio: on  osa koodia, joka ajetaan, kun ohjelma alkaa.
+#Alifunktio: funktio, jota pääfunktio (tai joku muu funktio) kutsuu tekemään tietyn tehtävän.
+
+# Alifunktio
+def tervehdys(nimi):
+    print("Hei, " + nimi + "!")
+
+# Pääfunktio
+def main():
+    tervehdys("Python")   # kutsutaan alifunktiota
+
+# Ohjelman käynnistys
+if __name__ == "__main__":
+    main()
+
+#Selitys:
+#tervehdys on alifunktio: se tekee yhden tehtävän (tervehtii).
+#main on pääfunktio: se hallitsee ohjelman kulkua ja kutsuu alifunktiota.
+#if __name__ == "__main__": varmistaa, että main() ajetaan vain, kun tiedosto suoritetaan suoraan.
+
+
+
+#B.  Miksi funktioita kannattaa käyttää? Mihin niitä käytetään?
+
+#Funktio on koodin osa, joka tekee tietyn tehtävän.
+# ja Miksi käyttää sitä se  helpottaa koodin uudelleenkäyttöä, 
+# pitää ohjelman siistinä ja helpottaa virheiden korjaamista.
+
+
+# Funktio, joka laskee neliön
+def neliö(x):
+    return x * x
+
+# Käytetään funktiota
+luku = 5
+tulos = neliö(luku)
+print("Luvun", luku, "neliö on", tulos)
+
+#C . Miten funktio määritellään? Miten sitä käytetään (kutsutaan)?
+
+#Funktio määritellään def-avainsanalla, ja sitä käytetään kutsumalla sen 
+# nimeä ja mahdollisia parametreja.
+
+def tervehdi(nimi):
+    print("Hei, " + nimi + "!")
+
+# Funktion kutsuminen
+tervehdi("Anna")  # Tulostaa: Hei, Anna!
+tervehdi("Matti") # Tulostaa: Hei, Matti!
+
+
+#Selitys:
+#def kertoo Pythonille, että nyt määritellään funktio.
+#tervehdi on funktion nimi.
+#(nimi) on parametri, jonka avulla voimme antaa funktiolle tietoa.
+#print suoritetaan aina, kun funktio kutsutaan.
+# Funktion määrittely
+
+# D. Miten funktiolle annetaan dataa (parametrit)? 
+# Mikä on parametrin oletusarvo ja miten sitä käytetään?
+
+#Funktiolle voidaan antaa dataa parametreina sulkujen sisällä. 
+#Parametrin oletusarvo tarkoittaa, että jos kutsuessa ei anneta arvoa, käytetään oletusarvoa.
+
+# Parametri ilman oletusarvoa
+def kerro_nimi(nimi):
+    print("Hei, " + nimi + "!")
+
+kerro_nimi("Anna")  # Tulostaa: Hei, Anna!
+
+# Parametri oletusarvolla
+def tervehdi(nimi="Maailma"):
+    print("Hei, " + nimi + "!")
+
+tervehdi()        # Tulostaa: Hei, Maailma!
+tervehdi("Matti") # Tulostaa: Hei, Matti!
+
+#E. Miten funktio palauttaa dataa kutsujalle (paluuarvo, return)? 
+# Mihin muuhun return-käskyä voidaan käyttää kuin arvon palauttamiseen?
+
+#funktio voi palauttaa arvon kutsujalle return-avainsanalla. 
+# Paluuarvo voidaan tallentaa muuttujaan tai käyttää suoraan laskutoimituksissa. 
+# Lisäksi return voi keskeyttää funktion suorituksen heti, vaikka se ei palauttaisikaan arvoa.
+
+# Paluuarvon käyttö
+def summa(a, b):
+    return a + b
+
+print(summa(3, 5))  # Tulostaa: 8
+
+# Return keskeyttää funktion
+def tarkista(luku):
+    if luku < 0: return
+    print("Luku on positiivinen")
+
+tarkista(-2)  # Ei tulosta mitään
+tarkista(5)   # Tulostaa: Luku on positiivinen
+
+
+#F. (vapaaehtoinen, haastava) Miten nimiavaruudet ja muuttujien näkyvyys toimivat? 
+# (Tai ”minkä ihmeen muuttujan arvon tämä funktio oikein tulostaa?”)
+
+#muuttujien näkyvyys eli scope riippuu siitä, missä muuttuja on määritelty.
+# Pääsääntöisesti muuttujat voivat olla globaaleja tai paikallisia.
+
+
+x = 10  # globaali muuttuja
+
+def funktio():
+    y = 5  # paikallinen muuttuja
+    print("Paikallinen y:", y)
+    print("Globaali x:", x)
+
+funktio()
+
+# print(y)  # Tämä aiheuttaa virheen, koska y on paikallinen
 
