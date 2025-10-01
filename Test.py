@@ -1,3 +1,31 @@
+#1. Pythonin esittely
+#A Mikä on Python? Mihin sitä käytetään?
+
+#Python on korkean tason ohjelmointikieli, joka on helppo oppia ja käyttää.
+#Käyttötarkoitukset lyhyesti:
+#Web-kehitys (esim. Django, Flask)
+#Datatiede ja analytiikka (esim. Pandas, NumPy)
+#Tekoäly ja koneoppiminen (esim. TensorFlow, PyTorch)
+#Automaatiot ja skriptit
+#Pelien kehitys (esim. Pygame)
+
+#B. Python on ns. tulkittava kieli. Mitä tämä tarkoittaa?
+
+#Pythonin ollessa tulkittava kieli tarkoittaa, että sen koodia suoritetaan suoraan 
+# riviltä riville tulkin avulla, eikä sitä tarvitse ensin kääntää erilliseksi ohjelmaksi.
+#tässä on Lyhyesti: Python-koodi ajetaan heti ilman käännöstä, mikä tekee testaamisesta ja
+#  kehittämisestä nopeaa ja helppoa.
+
+#C. Jos olet koodannut myös muilla kielillä, miten Python eroaa näistä?
+#  Miltä osin se on samanlainen? (esim. Pythonissa käytetään hyvin vähän sulkuja)
+
+#Pythonissa käytetään vähän sulkuja ja aaltosulkuja; lohkot määritellään sisennyksillä.
+#Syntaksi on selkeää ja luettavaa, muistuttaa englannin kieltä.
+#Python on tulkattava, kun taas monet kielet (C, C++) ovat käännettäviä.
+
+
+
+
 # Muuttujat
 
 # A  Mikä on muuttuja ja mitä sillä tehdään?
