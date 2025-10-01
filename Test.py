@@ -48,17 +48,10 @@ print(ikä_henkilö)   # 25
 ikä = 20
 print("Ikä:", ikä)  # tulostaa: Ikä: 20
 
-# Liukuluku (float)
-hinta = 19.99
-print("Hinta:", hinta)  # tulostaa: Hinta: 19.99
 
 # Merkkijono (str)
 nimi = "Anna"
 print("Nimi:", nimi)  # tulostaa: Nimi: Anna
-
-# Totuusarvo (bool)
-on_opiskelija = True
-print("On opiskelija:", on_opiskelija)  # tulostaa: On opiskelija: True
 
 
 # D Miten muuttujia käytetään? (muuttujan luominen, arvon sijoittaminen, arvon lukeminen)
@@ -833,3 +826,327 @@ funktio()
 
 # print(y)  # Tämä aiheuttaa virheen, koska y on paikallinen
 
+
+#9. Moduulit
+
+#A.  Mitä ovat moduulit? Miksi ne ovat olemassa?
+
+#Moduuli on Python-tiedosto (.py), jossa on valmiiksi tehtyjä funktioita ja muuttujia.
+#Moduuleja voidaan tuoda omaan ohjelmaan ja käyttää niiden sisältöä.
+
+# ja syy miksi ne ovat olemassa:
+
+#Ne säästävät aikaa, koska kaikkea ei tarvitse kirjoittaa itse.
+#Ne tekevät koodista selkeämpää ja jaettavampaa.
+#Pythonissa on paljon valmiita moduuleja (esim. math, random, os), ja voit myös tehdä omia.
+
+import math   # tuodaan math-moduuli
+
+luku = 16
+print(math.sqrt(luku))  # laskee neliöjuuren → tulostaa 4.0
+
+
+#B. Miten moduuleja käytetään?
+
+#Moduuleja käytetään  import-komennolla.
+#Ne sisältävät valmiita funktioita, muuttujia ja luokkia, joita voi käyttää ohjelmassa.
+
+# oma_moduuli.py
+
+# =========================================
+# Tämä on "oma_moduuli.py" moduuli
+# =========================================
+def tervehdys(nimi):
+    return f"Heippa, {nimi}!"
+
+def luku_kaksinkertainen(x):
+    return x * 2
+
+# =========================================
+# Tämä on pääohjelma, sama tiedosto esimerkkinä
+# =========================================
+
+# Tuodaan moduulin funktiot käyttöön (simuloidaan import)
+# Tässä samassa tiedostossa käytämme suoraan funktioita
+
+# Käytetään funktiota tervehdys
+print(tervehdys("Anna"))      # Tulostaa: Heippa, Anna!
+
+# Käytetään funktiota luku_kaksinkertainen
+print(luku_kaksinkertainen(5)) # Tulostaa: 10
+
+
+#C. Miten luot oman moduulin?
+#Moduuli on tiedosto, jossa on funktioita.
+#import oma_moduuli tuo moduulin käyttöön.
+#oma_moduuli.funktio() kutsuu moduulin funktiota.
+#Näin voit käyttää samoja funktioita monessa ohjelmassa ilman, 
+# että kirjoitat koodia uudelleen.
+
+# --- määritellään moduulin funktiot samassa tiedostossa ---
+def tervehdys(nimi):
+    return f"Heippa, {nimi}!"
+
+def summa(a, b):
+    return a + b
+
+# --- käytetään funktioita ---
+print(tervehdys("Anna"))  # Tulostaa: Heippa, Anna!
+print(summa(5, 7))        # Tulostaa: 12
+
+
+#10.Virheenkorjaus
+
+#A. Ohjelman ei ole tarkoitus kaatua, vaikka esimerkiksi käyttäjä antaisi kirjaimen,
+#  kun pyydetään numeroa. Miten try-except -rakenteella voi varautua virheisiin?
+
+#Tässä lyhyt ja selkeä selitys esimerkkikoodin kanssa:
+
+# Pyydetään käyttäjältä numeroa
+try:
+    luku = int(input("Anna kokonaisluku: "))
+    print("Annoit luvun:", luku)
+except ValueError:
+    print("Virhe! Et antanut kokonaislukua.")
+
+#try:-lohkossa laitetaan koodi, joka saattaa aiheuttaa virheen.
+#except-lohko käsittelee virheen, jotta ohjelma ei kaadu.
+#Tässä esimerkissä, jos käyttäjä kirjoittaa kirjaimen numeron sijaan,
+#  ohjelma tulostaa virheilmoituksen eikä kaadu.
+
+#B. Mitä ”else” ja ”finally” ovat try-catch -rakenteessa?
+
+#try: sisältää koodin, joka voi aiheuttaa vrheen.
+#except: käsittelee virheen, jos sitä tapahtuu.
+#else: suoritetaan vain, jos try onnistui ilman virhettä.
+#finally: suoritetaan aina, riippumatta siitä tapahtuiko virhe vai ei.
+#Käytännössä else sopii "onnistumisen käsittelyyn" ja finally
+#  "siivoukseen" tai koodiin, joka pitää suorittaa aina.
+
+try:
+    luku = int(input("Anna luku: "))
+except ValueError:
+    print("Virhe! Et antanut lukua.")
+else:
+    print("Annoit luvun oikein:", luku)
+finally:
+    print("Tämä suoritetaan aina, oli virhe tai ei.")
+
+#C. Miten ohjelmassa voidaan varautua useisiin erilaisiin virheisiin eri tavoilla? 
+# Esimerkiksi saattaisit haluta antaa eri virheilmoituksen, 
+# jos käyttäjä yrittää antaa lukujen sijaan kirjaimia ja jos hän yrittää jakaa nollalla. 
+# (Tässä voi käyttää kurssin esimerkkiä. 
+# Oikeita käytännön esimerkkejä useammasta virhetyypistä samaan aikaan ei ole kovin montaa.)
+
+# vähän pitkä kysymys mutta Mä yrittä  selitttä lyhesti
+
+try:
+    x = int(input("Anna jakaja: "))
+    y = 10 / x
+except ValueError:
+    print("Virhe! Et antanut lukua.")
+except ZeroDivisionError:
+    print("Virhe! Jakaminen nollalla ei ole sallittua.")
+else:
+    print("Laskutoimitus onnistui, tulos:", y)
+
+
+#ValueError käsittelee tilanteen, jossa käyttäjä ei anna lukua.
+#ZeroDivisionError käsittelee tilanteen, jossa yritetään jakaa nollalla.
+#else suoritetaan vain, jos virhettä ei tapahtunut.
+
+
+#D.Kaikkeen ei tarvitse käyttää try-catch -rakennetta.  Esimerkiksi IndexError tapahtuu, 
+# kun ohjelma viittaa listan ulkopuolelle eli listan kohtaan, jota ei ole olemassa. 
+# Miten tämän voisi estää tavallisella ehtolauseella? (vihje: 
+# listan kohdat numeroidaan 0…(listan pituus – 1))
+
+
+lista = [10, 20, 30]
+indeksi = 3  # haluttu kohta
+
+# Tarkistetaan, että indeksi on listan pituuden sisällä
+if 0 <= indeksi < len(lista):
+    print(lista[indeksi])
+else:
+    print("Virhe: indeksi ei ole listan sisällä!")
+
+
+
+#len(lista) kertoo listan pituuden.
+
+#0 <= indeksi < len(lista) varmistaa, että indeksi ei ole liian pieni
+#  (negatiivinen) eikä liian suuri.
+#Näin ohjelma ei kaadu, vaikka käyttäjä yrittäisi käyttää olematonta kohtaa.
+
+
+#11. Tietotyypit ja leikkaukset
+
+#A. Pythonin yleisimpiä tietotyyppejä ovat lista, sanakirja, tuple ja joukko. 
+# Esittele kolme näistä tietotyypeistä. Yhden voi siis jättää pois. Kerro, 
+# miten tietotyyppi toimii ja miten sitä käytetään (alkion hakeminen, lisääminen, 
+# muokkaaminen jos mahdollista).
+
+
+
+# Lista (list) – muokattava, järjestetty kokoelma
+lista = [10, 20, 30]
+print(lista[1])        # hakee toisen alkion -> 20
+lista.append(40)       # lisää alkion loppuun
+lista[0] = 5           # muuttaa ensimmäisen alkion
+print(lista)           # [5, 20, 30, 40]
+
+# Sanakirja (dict) – avain-arvo -pari, muokattava
+henkilo = {"nimi": "Anna", "ikä": 20}
+print(henkilo["nimi"]) # hakee arvon avaimella -> Anna
+henkilo["ikä"] = 21    # muuttaa arvon
+henkilo["kaupunki"] = "Helsinki"  # lisää uuden avain-arvo -parin
+print(henkilo)         # {'nimi': 'Anna', 'ikä': 21, 'kaupunki': 'Helsinki'}
+
+# Tuple (tuple) – järjestetty mutta muuttumaton
+opiskelija = ("Matti", 25, "Tietojenkäsittely")
+print(opiskelija[0])   # hakee ensimmäisen alkion -> Matti
+# opiskelija[1] = 26   # tämä aiheuttaisi virheen, tuple ei muokattavissa
+
+
+
+#Lista: muokattava, järjestetty, voi lisätä, poistaa, muuttaa alkioita.
+#Sanakirja: tietoja avain-arvo -pareina, muokattava, ei indeksiä vaan avain.
+#Tuple: järjestetty mutta ei muokattavissa, turvallinen tallentaa muuttumattomia tietoja.
+
+#12.Oliot
+
+#A.Jos meni liian vaikeaksi liian nopeasti, voit jättää koodiesimerkit pois ja
+#  kertoa vain lyhyesti teoriatasolla. Oliot ovat vaikeita – erityisesti 
+# jos et ole koodannut aikaisemmin.
+
+
+#Olio on kuin todellisen maailman esine ohjelmassa. Se sisältää ominaisuuksia (muuttujia) ja
+#  toimintoja (metodeja/funktioita).
+#Luokka (class) on kuin olion malli tai suunnitelma. Se kertoo, mitä ominaisuuksia ja
+#  toimintoja olioilla on.
+
+#Olio (object) on luokan toteutus, konkreettinen instanssi. Esimerkiksi Auto-luokka 
+# määrittelee ominaisuuksia kuten väri ja merkki, ja autoni on yksi Auto-olio, 
+# jolla on omat arvonsa.
+#Periytyminen tarkoittaa, että uusi luokka voi saada ominaisuuksia ja toimintoja 
+# toiselta luokalta, mutta voi myös muokata niitä.
+#Jäsenmuuttujat ja jäsenfunktiot ovat luokan sisällä määriteltyjä muuttujia ja funktioita,
+#  joita olio käyttää.
+#Suojatut jäsenet (esim. _nimi tai __nimi) rajoittavat suoraa ulkopuolista muokkausta, 
+# mutta luokka voi tarjota kontrolloidut metodit muuttamiseen.
+
+
+
+#B. Mikä on olio? Miksi oliot ovat olemassa?
+
+#Olio on ohjelmoinnissa “esine”, jolla on ominaisuuksia (tietoa, kuten nimi, ikä, väri) ja
+#  toimintoja (metodeja, kuten aja(), tulosta()).
+#Miksi oliot ovat olemassa:
+#Ne auttavat järjestämään koodin loogisiin kokonaisuuksiin.
+#Mahdollistavat uudelleenkäytön ja helpottavat ohjelman ylläpitoa.
+#Tukevat periytymistä, jolloin uusia olioita voidaan tehdä vanhojen pohjalta ilman,
+#  että kaikkea koodia tarvitsee kirjoittaa uudelleen.
+
+#C. Mitä tarkoitetaan periytymisellä? Miksi sitä käytetään?
+
+#Periytyminen tarkoittaa, että yksi luokka (aliluokka) voi periä ominaisuudet ja 
+# toiminnot toiselta luokalta (yliluokka).
+#Miksi sitä käytetään:
+#Vähentää koodin toistoa.
+#Mahdollistaa yhteisten toimintojen jakamisen useille luokille.
+#Helpottaa ohjelman laajentamista ja ylläpitoa.
+
+#Esimerkki:
+#Jos sinulla on luokka Eläin ja luokka Koira perii Eläin, Koira saa automaattisesti 
+# Eläin-luokan ominaisuudet (esim. nimi, ikä) ja metodit (esim. liiku()), 
+# eikä niitä tarvitse kirjoittaa uudelleen.
+
+#D. Miten luokka ja olio liittyvät toisiinsa? Miten määritellään
+#  oma luokka? Miten siitä luodaan olio?
+
+#uokka on kuin malli tai suunnitelma: se määrittelee, millaisia ominaisuuksia
+#  (muuttujia) ja toimintoja (metodeja) oliolla on.
+#Olio on luokan yksittäinen toteutus, konkreettinen esimerkki luokasta.
+
+
+class Koira:
+    def __init__(self, nimi):
+        self.nimi = nimi
+    def hauku(self):
+        print(self.nimi + " sanoo: Hau!")
+
+k = Koira("Rex")
+k.hauku()  # Tulostaa: Rex sanoo: Hau!
+
+#class Koira: määrittelee luokan.
+#__init__ alustaa oliolle ominaisuudet (nimi, ikä).
+#self viittaa juuri luotuun olioon.
+#koira olio eli konkreettisia koiria luokasta Koira.
+
+
+#E. Miten luokan/olion jäsenmuuttujat ja -funktiot toimivat?
+
+#Selitetään lyhyesti:
+#Jäsenmuuttuja (attribute) on muuttuja, joka kuuluu tietylle oliolle tai luokalle. 
+# Se säilyttää olioon liittyvää tietoa.
+#Jäsenfunktio (metodi) on funktio, joka kuuluu luokkaan ja 
+# voi käyttää tai muuttaa jäsenmuuttujia.
+
+class Auto:
+    def __init__(self, merkki):
+        self.merkki = merkki
+
+    def nayta(self):
+        print(self.merkki)
+
+auto = Auto("Toyota")
+auto.nayta()  # Tulostaa: Toyota
+
+#merkki = jäsenmuuttuja
+#nayta() = jäsenfunktio, joka näyttää muuttujan arvon
+
+#F. Miten jäsenmuuttujat suojataan siten, että kukaan ulkopuolinen ei muuta niitä 
+# hallitsemattomasti? Miten voidaan tarjota mahdollisuus muuttaa niitä tavalla, 
+# jota luokka voi hallita (esim. pituuteen ei pysty laittamaan negatiivisia arvoja)?
+
+class Henkilo:
+    def __init__(self, ika):
+        self.__ika = ika
+
+    def get_ika(self):
+        return self.__ika
+
+    def set_ika(self, uusi_ika):
+        if uusi_ika >= 0: self.__ika = uusi_ika
+
+h = Henkilo(25)
+print(h.get_ika())  # 25
+h.set_ika(-5)       # ei muuta
+h.set_ika(30)
+print(h.get_ika())  # 30
+
+
+#__ika = suojattu muuttuja (ei voi muuttaa suoraan ulkopuolelta)
+#get_ika() = luokan hallitsema tapa lukea arvo
+#set_ika() = luokan hallitsema tapa muuttaa arvo turvallisesti (esim. 
+# tarkistus negatiiviselle luvulle)
+
+#G. Miten periytyminen toteutetaan? Kerro myös metodien (jäsenfunktioiden) 
+# ylikirjoittamisesta.
+
+# Perusluokka
+class Elain:
+    def aantele(self):
+        print("Ääni!")
+
+# Aliluokka perii Elain-luokan
+class Koira(Elain):
+    def aantele(self):  # ylikirjoitus
+        print("Hau hau!")
+
+Koira().aantele()  # tulostaa: Hau hau!
+
+#Selitys:
+#Aliluokka perii yliluokan ominaisuudet.
+#Metodia voi ylikirjoittaa aliluokassa muuttamaan käyttäytymistä.
