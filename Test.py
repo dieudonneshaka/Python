@@ -2,6 +2,7 @@
 
 #2– Pythonin esittely
 
+#Mikä on Python?
 #Python on helppo, selkeä ja monipuolinen ohjelmointikieli.
 #ja sitä Käytetään web-kehityksessä, tietojenkäsittelyssä, tekoälyssä ja automaatiossa.
 #python on myös Tulkattava kieli: koodi suoritetaan riviltä riville ilman erillistä käännöstä.
