@@ -1,30 +1,20 @@
-#1 – Esittely
 
-#Tämä video opettaa Pythonin perusteet aloittelijalle.
-#Esittele itsesi ja kerro lyhyesti ohjelmointitaustasi.
-
-#Koodi:
-
-print("Tervetuloa Python-opetukseen!")  
-# Tulostaa viestin näytölle, kertoo videon aloituksen
 
 #2– Pythonin esittely
 
 #Python on helppo, selkeä ja monipuolinen ohjelmointikieli.
-#Käytetään mm. web-kehityksessä, tietojenkäsittelyssä, tekoälyssä ja automaatiossa.
-#Tulkattava kieli: koodi suoritetaan riviltä riville ilman erillistä käännöstä.
-#Eroaa muista kielistä selkeydellä ja vähäisellä sulkujen käytöllä.
+#ja sitä Käytetään web-kehityksessä, tietojenkäsittelyssä, tekoälyssä ja automaatiossa.
+#python on myös Tulkattava kieli: koodi suoritetaan riviltä riville ilman erillistä käännöstä.
+#ja tämän takiä se Eroaa muista kielistä selkeydellä ja vähäisellä sulkujen käytöllä.
 
 #Koodi:
 
-
-print("Python on helppo ja monipuolinen ohjelmointikieli!")  
-# Tulostaa näytölle Pythonin kuvauksen
+print("hello world")
 
 
 #3 – Muuttujat
 
-#Muuttuja on nimetty säiliö tiedolle (teksti, luku, totuusarvo).
+#Muuttuja on nimetty säiliö tiedolle eli teksti, luku, totuusarvo.
 #Nimeämisrajoituksia: ei numeroa alussa, ei erikoismerkkejä (paitsi _).
 #Hyvä nimi kuvaa muuttujan sisältöä (esim. nimi, ika).
 
@@ -36,14 +26,14 @@ pisteet = 88.5   # Liukuluku
 print(nimi, ika, pisteet)  # Tulostaa kaikki muuttujat näytölle
 
 
-
 #4 – Syötteet ja tulostaminen
 
-#Teoria:
-#input() ottaa käyttäjän syötteen näppäimistöltä.
-#Syöte on aina teksti, voidaan muuntaa int() avulla kokonaisluvuksi.
-#print() tulostaa tekstin ja muuttujia voi yhdistää +, , tai f-merkkijonolla.
-#Erikoismerkit voidaan käsitellä -merkinnällä.
+#Syötteet on input() joka  ottaa käyttäjän syötteen näppäimistöltä.
+#se on aina teksti, voidaan muuntaa int() avulla tai kokonaisluvuksi.
+#tulostaminen on print() joka tulostaa tekstin ja muuttujia voi yhdistää + 
+# tai f-merkkijonolla.
+#ja Erikoismerkit voidaan käsitellä minus merkinnällä. tässä tilanteessa se ei ole minus
+# se on vaan merkki
 
 #Koodi:
 
@@ -62,11 +52,13 @@ except ValueError:
 
 # 5 – Merkkijonot
 
-#Merkkijono = teksti.
-#len() kertoo merkkijonon pituuden.
-#[alku:loppu] leikkaa osan merkkijonosta.
-#Toistaminen *-operaattorilla.
-##Valmisfunktiot: upper(), lower(), strip(), replace(), split().
+#mitä on merkkijono?
+#Merkkijono on  teksti.
+#merkkijonossa aika on paljon toimintoja. puhutaan niistä muutama.
+# on olemassa len ja len laskee merkkien määrän
+#ja toinen strip = siivoaa turhat välilyönnit
+#upper ja upper  muuttaa sanat  isoksi
+#on olemässä myös replace joka  vaihtaa sanan toiseen
 
 #Koodi:
 
@@ -79,13 +71,16 @@ print(teksti*2)                             # Toistaa merkkijonon kaksi kertaa
 
 
 
+
 #6 – Valintarakenteet (if-lause)
+
 #if-lause suorittaa koodilohkon, jos ehto on tosi.
 #if-else: jos ehto epätosi, suoritetaan toinen lohko.
 #if-elif-else: useita ehtoja peräkkäin.
 #Sisennys määrittää lohkon.
-#Vertailut: ==, !=, <, >, <=, >=, in, not in.
-#Ehdot voidaan yhdistää: and, or, not.
+#Vertailut: ovat yhtäsuuri kuin tai pienempi kuin tai isompi kuin.
+
+#
 
 #Koodi:
 
@@ -98,7 +93,8 @@ else:                       # Jos mikään yllä olevista ehdoista ei ole tosi
     print("Olet lapsi")     # Suoritetaan tämä
 
 
-#7 Toistorakenteet
+#7 Toistorakenteet while ja for)
+
 #Toistorakenne suorittaa koodia useita kertoja.
 #while: toistaa niin kauan kuin ehto on tosi.
 
@@ -119,9 +115,12 @@ while laskuri < 3:         # Toistaa niin kauan kuin laskuri on pienempi kuin 3
     laskuri += 1           # Lisää laskuriin 1 joka kierroksella
 
 
+
 #8 – Tiedostojen käsittely
-#open() tiedoston käsittelyyn: "r" luku, "w" kirjoitus, "rb"/"wb" binaari.
-#with sulkee tiedoston automaattisesti, mikä on turvallista.
+
+#Tiedostojen käsittely Pythonissa tarkoittaa sitä, että
+#  ohjelma voi kirjoittaa, lukea ja muokata tiedostoja 
+# (esim. .txt tai binääritiedostoja).
 
 #Koodi:
 
@@ -143,21 +142,29 @@ with open("esimerkki.bin","rb") as f:  # Avaa tiedoston binäärilukua varten
 
 
 #9 – Funktiot
-#Funktio = koodilohko uudelleenkäyttöön.
-#Parametrit = dataa funktiolle, return palauttaa arvon.
-#Pääfunktio = ohjelman aloitus, alifunktio = mitä tahansa muuta funktiota.
+
+#Mikä on funktio?
+#Funktio on ohjelman osa, joka on uudelleenkäytettävä koodilohko. 
+# Sen avulla voidaan pilkkoa ohjelma pienempiin osiin, tehdä koodista selkeämpää 
+# ja välttää toistoa.
+
+#Perusasiat:
+#Määritellään def-avainsanalla.
+#Voi ottaa parametreja (syötteitä).
+#Voi palauttaa arvon return-komennolla.
+#Funktiota käytetään kutsumalla sen nimeä.
 
 #Koodi:
 
 def tervehdi(nimi):                # Määrittelee funktion, joka ottaa parametrin nimi
     return f"Hei {nimi}!"          # Palauttaa tulostettavan merkkijonon
 
-print(tervehdi("Anna"))            # Kutsuu funktiota ja tulostaa sen palauttaman arvon
+print(tervehdi("roope"))            # Kutsuu funktiota ja tulostaa sen palauttaman arvon
 
 
 #10 – Moduulit
 #Moduuli = erillinen Python-tiedosto, jossa on funktioita ja koodia.
-#Mahdollistaa koodin uudelleenkäytön.
+#joka Mahdollistaa koodin uudelleenkäytön.
 
 #Koodi:
 
@@ -170,7 +177,8 @@ print(tervehdi("Mikko"))
 
 
 #11 – Virheenkorjaus
-#ry-except: varautuu virheisiin (esim. väärä syöte).
+
+#varautuu virheisiin (esim. väärä syöte).
 #else suoritetaan, jos virhettä ei tullut.
 #finally suoritetaan aina riippumatta virheestä.
 
@@ -187,9 +195,10 @@ finally:                               # Suoritetaan aina
 
 
 #12 – Tietotyypit
-#Lista = muokattava, järjestetty kokoelma.
-#Sanakirja = avain-arvo-pari.
-#Tuple = järjestetty, mutta muuttumaton.
+
+#Lista on muokattava, järjestetty kokoelma.
+#Sanakirja on avain-arvo-pari.
+#Tuple on järjestetty, mutta muuttumaton.
 
 #Koodi:
 
@@ -206,10 +215,14 @@ print(tuple_[0])               # Tulostaa ensimmäisen alkion
 
 
 #13 – Oliot ja luokat
-#Luokka = mallipohja, olio = instanssi.
-#Jäsenmuuttujat tallentavat tiedon, jäsenfunktiot toiminnon.
-#Periytyminen = uusi luokka saa ominaisuuksia vanhasta.
-#Suojatut jäsenet (__nimi) hallitsevat pääsyä.
+
+#Mikä on luokka?
+#Luokka on malli, jonka avulla luodaan olioita.
+#Luokassa määritellään, mitä ominaisuuksia (muuttujia) ja toimintoja (metodeja)
+
+#ja Mikä on olio?
+#Olio on luokan yksittäinen ilmentymä (kopio), joka voi tallentaa tietoa ja suorittaa toimintoja.
+#Jokaisella oliolla voi olla omat arvonsa.
 
 #Koodi:
 
