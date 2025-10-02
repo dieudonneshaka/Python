@@ -5,8 +5,9 @@
 #Käyttötarkoitukset lyhyesti:
 #Web-kehitys (esim. Django, Flask)
 #Datatiede ja analytiikka (esim. Pandas, NumPy)
-#Tekoäly ja koneoppiminen 
-
+#Tekoäly ja koneoppiminen (esim. TensorFlow, PyTorch)
+#Automaatiot ja skriptit
+#Pelien kehitys (esim. Pygame)
 
 #B. Python on ns. tulkittava kieli. Mitä tämä tarkoittaa?
 
@@ -25,31 +26,33 @@
 
 
 
-
 # Muuttujat
 
 # A  Mikä on muuttuja ja mitä sillä tehdään?
 
 # Muuttuja on kuin laatikko, johon voidaan laittaa arvoja säilytettäväksi.
-
 ikä = 20       # kokonaisluku
+nimi = "Anna"  # merkkijono (teksti)
 
+# Voimme käyttää näitä muuttujia ohjelmassa myöhemmin
+print("Nimi:", nimi)  # tulostaa: Nimi: Anna
 print("Ikä:", ikä)    # tulostaa: Ikä: 20
+
+
+#Selitys:
+#Muuttuja tallentaa tiedon, esimerkiksi numeron tai tekstin.
+#Sen avulla voimme käsitellä tietoja ohjelmassa, tulostaa ne, laskea niillä, tai muuttaa niiden arvoa.
+
 
 
 
 # B Muuttujien nimeämisen rajoitukset Pythonissa:
-
-
-#Muuttujien nimeämisen
 #Ei voi alkaa numerolla → 1luku ❌
 #Ei erikoismerkkejä (@, #, $, %) → nimi$ ❌
-
-# ✅ Sallittuja
-ika = 25
-etunimi = "Anna"
-luku1 = 100
-_salasana = "abc123"
+#Ei Pythonin varattuja sanoja (if, for, True) → if ❌
+#Hyvä käytäntö:
+#Käytä kuvaavia nimiä → ikä_henkilö, nimi_henkilö
+#Pienet kirjaimet, sanat erotetaan alaviivalla → oma_muuttuja
 
 
 #C Pythonin perustietotyypit ovat yksinkertaisia tapoja tallentaa ja käsitellä
@@ -61,9 +64,18 @@ _salasana = "abc123"
 #bool = tosi/epätosi
 
 
-nimi_henkilö = "Jenna"
+nimi_henkilö = "Anna"
+ikä_henkilö = 25
 
-print(nimi_henkilö)  
+print(nimi_henkilö)  # Anna
+print(ikä_henkilö)   # 25
+
+
+
+# Kokonaisluku (int)
+ikä = 20
+print("Ikä:", ikä)  # tulostaa: Ikä: 20
+
 
 # Merkkijono (str)
 nimi = "Anna"
